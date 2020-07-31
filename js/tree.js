@@ -200,7 +200,7 @@ class TreeDraw {
 var treeDraw = new TreeDraw();
 var colasPrioridad = new ColasPrioridad();
 
-function printTrees() {
+function printTree() {
     treeDraw.head = null;
     treeDraw.nodeCounter = 0;
     colasPrioridad.draw();
@@ -213,7 +213,7 @@ function printTrees() {
 
 function insertNode() {
     colasPrioridad.creaP(parseInt($('#numberTxt').val()));
-    printTrees();
+    printTree();
     $('#numberTxt').val("");
     $('#numberTxt').focus();
 }
@@ -222,10 +222,12 @@ function deleteRoot() {
     if (colasPrioridad.m.a.length > 1) {
         var retira = colasPrioridad.retirarP();
         alert("El valor retirado es: " + retira);
-        printTrees();
+        printTree();
         $('#numberTxt').focus();
     }
     else {
         alert("No se puede eliminar por que el árbol esta vacio.");
     }
 }
+
+printTree();
