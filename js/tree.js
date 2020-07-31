@@ -180,8 +180,7 @@ class TreeDraw {
             var htmlRight = this.toHTML(head.right);
 
             html = '<li>' +
-                '<div class="rounded-pill px-2 py-1" >' + head.value +
-                '</div>';
+                '<div class="rounded-pill px-2 py-1" >' + head.value + '</div>';
 
             if (!(head.left === null && head.right === null)) {
 
