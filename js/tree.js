@@ -1,15 +1,13 @@
 // JavaScript Document
 
 class Tree {
-    MAXIMO;
     cont;
     a;
 
     constructor() {
-        this.MAXIMO = 100;
         this.cont = 0;
         this.a = [];
-        this.a[0] = Number.MAX_SAFE_INTEGER;
+        this.a[0] = Number.MAX_VALUE;
     }
 }
 
