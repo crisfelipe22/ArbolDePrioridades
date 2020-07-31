@@ -210,7 +210,7 @@ function printTree() {
 
 function insertNode() {
     if($('#numberTxt').val() !== "") {
-        colasPrioridad.creaP(parseInt($('#numberTxt').val()));
+        colasPrioridad.creaP(parseFloat($('#numberTxt').val()));
         printTree();
         $('#numberTxt').val("");
         $('#numberTxt').focus();
