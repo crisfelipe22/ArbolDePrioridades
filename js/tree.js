@@ -43,7 +43,6 @@ class ColasPrioridad {
                 if (this.m.a[j] <= this.m.a[j + 1]) {
                     j++;
                 }
-
             }
             if (temp >= this.m.a[j]) {
                 break;
@@ -168,7 +167,6 @@ class TreeDraw {
 
     toHTML(head) {
         var html = "";
-
         if (head === null) {
             return '<li><span class="px-2 py-1">*</span></li>';
         } else {
@@ -179,7 +177,6 @@ class TreeDraw {
                 '<div class="rounded-pill px-2 py-1" >' + head.value + '</div>';
 
             if (!(head.left === null && head.right === null)) {
-
                 html += '<ul>' +
                     htmlLeft +
                     htmlRight +
