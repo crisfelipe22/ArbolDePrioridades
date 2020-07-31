@@ -74,7 +74,6 @@ class ColasPrioridad {
                 }
                 treeDraw.addNode(parseInt(i / 2), string, this.m.a[i]);
             }
-
         }
     }
 }
