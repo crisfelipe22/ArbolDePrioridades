@@ -137,7 +137,6 @@ class TreeDraw {
                 //alert("El nodo ya esta ocupado.");
                 return false;
             }
-
         } else {
             var parentNode = this.findId(this.head, parentId);
 
@@ -152,7 +151,6 @@ class TreeDraw {
                     //alert("El nodo ya esta ocupado.");
                     return false;
                 }
-
             } else if (direction === "right") {
                 if (parentNode.right === null) {
                     this.nodeCounter++;
@@ -190,7 +188,6 @@ class TreeDraw {
                     '</ul>' +
                     '</li>';
             }
-
             html += '</li>';
         }
         return html;
@@ -212,10 +209,14 @@ function printTree() {
 }
 
 function insertNode() {
-    colasPrioridad.creaP(parseInt($('#numberTxt').val()));
-    printTree();
-    $('#numberTxt').val("");
-    $('#numberTxt').focus();
+    if($('#numberTxt').val() !== "") {
+        colasPrioridad.creaP(parseInt($('#numberTxt').val()));
+        printTree();
+        $('#numberTxt').val("");
+        $('#numberTxt').focus();
+    }else{
+        alert("Ingrese un dato válido.");
+    }
 }
 
 function deleteRoot() {

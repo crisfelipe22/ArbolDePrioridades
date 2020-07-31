@@ -82,12 +82,12 @@ body{
     display: inline-block;
     border: 1px solid #000;
     transition: all 0.5s;
-    background: #007bff;
+    background: #e47600;
     color: #fff; 
 }
 
 /*Efectos mouse over*/
 .tree li div:hover, .tree li div:hover+ul li div {
-    background: #e47600; 
+    background: #F00; 
     border: 1px solid #94a0b4;
 }
