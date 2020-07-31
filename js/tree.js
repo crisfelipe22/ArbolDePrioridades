@@ -226,7 +226,7 @@ function deleteRoot() {
         $('#numberTxt').focus();
     }
     else {
-        alert("No se puede eliminar por que el árbol esta vacio.");
+        alert("No se puede eliminar por que el árbol esta vacío.");
     }
 }
 
