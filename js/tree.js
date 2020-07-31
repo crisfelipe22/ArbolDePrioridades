@@ -1,91 +1,85 @@
 // JavaScript Document
 
 class Tree {
-    MAXIMO=100;
+    MAXIMO = 100;
     cont;
     a;
 
-    constructor(){
-    	this.cont=0;
-    	this.a=[];
-    	this.a[0]=Number.MAX_SAFE_INTEGER;
+    constructor() {
+        this.cont = 0;
+        this.a = [];
+        this.a[0] = Number.MAX_SAFE_INTEGER;
     }
 }
 
-class ColasPrioridad{
-	m;
-	constructor(){
-		this.m=new Tree();
-	}
+class ColasPrioridad {
+    m;
+    constructor() {
+        this.m = new Tree();
+    }
 
-	creaP(dato){
-		var i,j;
-		this.m.cont++;
-		i=this.m.cont;
-		j=parseInt(i/2);
+    creaP(dato) {
+        var i, j;
+        this.m.cont++;
+        i = this.m.cont;
+        j = parseInt(i / 2);
 
-		while(this.m.a[j]<dato){
-			this.m.a[i]=this.m.a[j];
-			i=j;
-			j=parseInt(i/2);
-		}
-		this.m.a[i]=dato;
-	}
+        while (this.m.a[j] < dato) {
+            this.m.a[i] = this.m.a[j];
+            i = j;
+            j = parseInt(i / 2);
+        }
+        this.m.a[i] = dato;
+    }
 
-	retirarP(){
-		var i,j,temp,elemento;
-		elemento=this.m.a[1];
-		temp=this.m.a[this.m.cont];
-		this.m.cont--;
-		i=1;
-		j=2;
-		while(j<=this.m.cont){
-			if(j<this.m.cont){
-				if(this.m.a[j]<=this.m.a[j+1])
-				{
-					j++;
-				}
+    retirarP() {
+        var i, j, temp, elemento;
+        elemento = this.m.a[1];
+        temp = this.m.a[this.m.cont];
+        this.m.cont--;
+        i = 1;
+        j = 2;
+        while (j <= this.m.cont) {
+            if (j < this.m.cont) {
+                if (this.m.a[j] <= this.m.a[j + 1]) {
+                    j++;
+                }
 
-			}
-			if(temp>=this.m.a[j])
-				{
-					break;
-				}
-				this.m.a[i]=this.m.a[j];
-				i=j;
-				j=2*i;
-		}
-		this.m.a[i]=temp;
-		//delete(this.m.a[this.m.cont]);
-		this.m.a.splice(this.m.cont+1,1);
-		return elemento;
-	}
+            }
+            if (temp >= this.m.a[j]) {
+                break;
+            }
+            this.m.a[i] = this.m.a[j];
+            i = j;
+            j = 2 * i;
+        }
+        this.m.a[i] = temp;
+        //delete(this.m.a[this.m.cont]);
+        this.m.a.splice(this.m.cont + 1, 1);
+        return elemento;
+    }
 
-	draw()//recorre el arreglo para dibujarlo
-	{
-		console.log(this.m.a);
-		
-		for(var i=1;i<this.m.a.length;i++){
-				if(i===1)
-				{
-					treeDraw.addNode("root",null,this.m.a[i]);
-				}else{
-					var raiz,string;
-					if((i%2)===0)
-					{
-						string="left";
-					}
-					else{
-						string="right";
-					}
-					treeDraw.addNode(parseInt(i/2),string,this.m.a[i]);
-				}				
-			
-		}
-		console.log(this.m.a);
-		
-		
-	}
+    draw()//recorre el arreglo para dibujarlo
+    {
+        console.log(this.m.a);
+
+        for (var i = 1; i < this.m.a.length; i++) {
+            if (i === 1) {
+                treeDraw.addNode("root", null, this.m.a[i]);
+            } else {
+                var raiz, string;
+                if ((i % 2) === 0) {
+                    string = "left";
+                }
+                else {
+                    string = "right";
+                }
+                treeDraw.addNode(parseInt(i / 2), string, this.m.a[i]);
+            }
+
+        }
+        console.log(this.m.a);
+    }
 }
 
 class Node {
@@ -136,8 +130,8 @@ class TreeDraw {
     }
 
     addNode(parentId, direction, value) {
-    	
-    	//console.log(parentId+" "+direction+" "+value);
+
+        //console.log(parentId+" "+direction+" "+value);
         if (parentId === "root") {
             if (this.head == null) {
                 this.nodeCounter++;
@@ -191,7 +185,7 @@ class TreeDraw {
             var htmlRight = this.toHTML(head.right);
 
             html = '<li>' +
-                '<div class="rounded-pill px-2 py-1" >' +head.value +
+                '<div class="rounded-pill px-2 py-1" >' + head.value +
                 '</div>';
 
             if (!(head.left === null && head.right === null)) {
@@ -208,40 +202,36 @@ class TreeDraw {
 
         return html;
     }
-
-    
 }
 
-var treeDraw=new TreeDraw();
-var colasPrioridad=new ColasPrioridad();
+var treeDraw = new TreeDraw();
+var colasPrioridad = new ColasPrioridad();
 
 function printTrees() {
-	treeDraw.head=null;
-	treeDraw.nodeCounter=0;
-	colasPrioridad.draw();
+    treeDraw.head = null;
+    treeDraw.nodeCounter = 0;
+    colasPrioridad.draw();
     if (treeDraw.head === null) {//si aun no hay raiz        
         $('#ulTree').html("Árbol vacío");
-    } else {        
+    } else {
         $('#ulTree').html(treeDraw.toHTML(treeDraw.head));//imprimir arbol
-    }   
-
+    }
 }
 
-function insertNode(){
-	colasPrioridad.creaP(parseInt($('#numberTxt').val()));		
-	printTrees();	
-	console.log(colasPrioridad.m.a);
+function insertNode() {
+    colasPrioridad.creaP(parseInt($('#numberTxt').val()));
+    printTrees();
+    console.log(colasPrioridad.m.a);
 }
 
-function deleteRoot(){
-	if(colasPrioridad.m.a.length>1){
-		var retira=colasPrioridad.retirarP();
-		console.log(colasPrioridad.m.a);
-		alert("El valor retirado es: "+retira);	
-		printTrees();
-	}
-	else{
-		alert("No se puede eliminar por que el árbol esta vacio.");		
-	}	
-	
+function deleteRoot() {
+    if (colasPrioridad.m.a.length > 1) {
+        var retira = colasPrioridad.retirarP();
+        console.log(colasPrioridad.m.a);
+        alert("El valor retirado es: " + retira);
+        printTrees();
+    }
+    else {
+        alert("No se puede eliminar por que el árbol esta vacio.");
+    }
 }
